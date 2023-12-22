@@ -18,26 +18,32 @@ import java.sql.*;
  */
 public class JdbcStatementQueryPart {
 
+    public static Connection connection;
+    static {
+        try {
+            //1.注册驱动
+            /**
+             * TODO: 注意
+             *   Driver -> com.mysql.cj.jdbc.Driver
+             */
+            DriverManager.registerDriver(new Driver());
+            //2.获取连接
+            /**
+             * TODO: 注意
+             *   面向接口编程
+             *   java.sql 接口 = 实现类
+             *   connection 使用java.sql.Connection接口接收
+             */
+             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu",
+                    "root",
+                    "toor!");
+
+            //连接可以复用所以可以写成全局的变量
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main(String[] args) throws SQLException {
-
-        //1.注册驱动
-        /**
-         * TODO: 注意
-         *   Driver -> com.mysql.cj.jdbc.Driver
-         */
-        DriverManager.registerDriver(new Driver());
-
-        //2.获取连接
-        /**
-         * TODO: 注意
-         *   面向接口编程
-         *   java.sql 接口 = 实现类
-         *   connection 使用java.sql.Connection接口接收
-         */
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu",
-                "root",
-                "root");
-
         //3.创建小车
         Statement statement = connection.createStatement();
 
