@@ -25,7 +25,7 @@ public class BankService {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         int flag = 0;
 
@@ -36,9 +36,9 @@ public class BankService {
 
             BankDao bankDao = new BankDao();
             //调用加钱 和 减钱
-            bankDao.addMoney(addAccount,money,connection);
+            System.out.println(bankDao.addMoney(addAccount,money,connection));
             System.out.println("--------------");
-            bankDao.subMoney(subAccount,money,connection);
+            System.out.println(bankDao.subMoney(subAccount,money,connection));;
             flag = 1;
             //不报错,提交事务
             connection.commit();
