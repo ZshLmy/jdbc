@@ -143,7 +143,7 @@ public class JdbcPreparedStatementCrudPart {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         //TODO: 切记, ? 只能代替 值!!!!!  不能代替关键字 特殊符号 容器名
         String sql = "select id,account,password,nickname from t_user ;";

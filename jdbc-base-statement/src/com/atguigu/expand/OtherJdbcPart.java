@@ -21,7 +21,7 @@ public class OtherJdbcPart {
         //1.注册驱动
         Class.forName("com.mysql.cj.jdbc.Driver");
         //2.获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu?user=root&password=root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu?user=root&password=toor!");
         //3.编写SQL语句结构
         String sql = "insert into t_user (account,password,nickname) values (?,?,?);";
         //4.创建预编译的statement，传入SQL语句结构
@@ -37,13 +37,13 @@ public class OtherJdbcPart {
         //6.执行SQL语句 【注意：不需要传入SQL语句】 DML
         int i = statement.executeUpdate();
         //7.结果集解析
-        System.out.println("i = " + i);
+        System.out.println("受影响的数据行数 = " + i);
 
         //一行一列的数据！里面就装主键值！
         ResultSet resultSet = statement.getGeneratedKeys();
         resultSet.next();
         int anInt = resultSet.getInt(1);
-        System.out.println("anInt = " + anInt);
+        System.out.println("getGeneratedKeys = " + anInt);
 
 
         //8.释放资源
@@ -70,7 +70,7 @@ public class OtherJdbcPart {
         Class.forName("com.mysql.cj.jdbc.Driver");
         //2.获取连接
         Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu?rewriteBatchedStatements=true",
-                "root","root");
+                "root","toor!");
         //3.编写SQL语句结构
         String sql = "insert into t_user (account,password,nickname) values (?,?,?)";
         //4.创建预编译的statement，传入SQL语句结构
@@ -80,7 +80,7 @@ public class OtherJdbcPart {
          */
         long start = System.currentTimeMillis();
         PreparedStatement statement = connection.prepareStatement(sql);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
 
             //5.占位符赋值
             statement.setObject(1,"ergouzi"+i);
@@ -95,7 +95,7 @@ public class OtherJdbcPart {
 
         long end = System.currentTimeMillis();
 
-        System.out.println("消耗时间："+(end - start));
+        System.out.println("消耗时间："+(end - start)+" ms");
 
 
         //7.结果集解析
