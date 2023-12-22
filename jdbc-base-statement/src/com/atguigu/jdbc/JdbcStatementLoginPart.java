@@ -13,7 +13,9 @@ public class JdbcStatementLoginPart {
 
         //1.输入账号和密码
         Scanner scanner = new Scanner(System.in);
+        System.out.println("输入账号：");
         String account = scanner.nextLine();
+        System.out.println("输入密码");
         String password = scanner.nextLine();
         scanner.close();
 
@@ -68,7 +70,7 @@ public class JdbcStatementLoginPart {
          *
          */
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         //固定方法固定剂
         //创建statement

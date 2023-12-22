@@ -24,11 +24,12 @@ public class JdbcPreparedStatementCrudPart {
     @Test
     public void testInsert() throws Exception{
 
+        //Class.forName() 语句实际上触发了 Java 的类加载机制，它会加载并初始化指定的类，而在这个过程中，com.mysql.cj.jdbc.Driver 类的静态代码块中通常包含了数据库驱动的注册。
         //注册驱动
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         //TODO: 切记, ? 只能代替 值!!!!!  不能代替关键字 特殊符号 容器名
         String sql = "insert into t_user(account,password,nickname) values (?,?,?);";
@@ -63,7 +64,7 @@ public class JdbcPreparedStatementCrudPart {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         //TODO: 切记, ? 只能代替 值!!!!!  不能代替关键字 特殊符号 容器名
         String sql = "update t_user set nickname = ? where account = ? ;";
@@ -96,7 +97,7 @@ public class JdbcPreparedStatementCrudPart {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         //获取连接
-        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql:///atguigu", "root", "toor!");
 
         //TODO: 切记, ? 只能代替 值!!!!!  不能代替关键字 特殊符号 容器名
         String sql = "delete from t_user where account = ? ;";
